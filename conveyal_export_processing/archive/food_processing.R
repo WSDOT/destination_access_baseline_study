@@ -64,52 +64,24 @@ food_wp2vwp1 <- food_WP2 / food_WP1
 food_wp3vwp1 <- food_WP3 / food_WP1
 food_wp4vwp1 <- food_WP4 / food_WP1
 
-food_wp2vwp1
-
-freq(food_wp2vwp1)
-freq(food_wp3vwp1)
-freq(food_wp4vwp1)
-
-food_wp2vwp1
-food_wp3vwp1
-
-#time difference dataset ----
-food_wp2wp1_diff <- food_WP2 - food_WP1
-food_wp3wp1_diff <- food_WP3 - food_WP1
-food_wp4wp1_diff <- food_WP4 - food_WP1
-
-
-plot(food_wp2vwp1)
-plot(food_WP2)
-
-mapview(food_wp2vwp1) +
-  mapview(food_wp3vwp1) +
-  mapview(food_wp4vwp1)
-
-mapview(food_wp2wp1_diff) +
-  mapview(food_wp3wp1_diff) +
-  mapview(food_wp4wp1_diff)
-
-summary(wa_food)
-
 # #update values over 120 to 121 minutes----
-food_WP1_121 <- food_WP1
-  food_WP1_121[is.nan(food_WP1_121)| food_WP1_121 == 0] <- 121
-
-  food_WP2_121 <- food_WP2
-  food_WP2_121[is.nan(food_WP2_121)| food_WP2_121 == 0] <- 121
-
-food_WP3_121 <- food_WP3 
-  food_WP3_121[is.nan(food_WP3_121)| food_WP3_121 == 0] <- 121
-
-food_WP4_121 <- food_WP4
-food_WP4_121[is.nan(food_WP4_121)| food_WP4_121 == 0] <- 121
-
-food_car_121 <- food_car
-food_car_121[is.nan(food_car_121)| food_car_121 == 0] <- 121
-
-#consolidate into layered raster
-wa_food_121 <- c(food_WP1_121, food_WP2_121, food_WP3_121, food_WP4_121, food_car_121)
+# food_WP1_121 <- food_WP1
+#   food_WP1_121[is.nan(food_WP1_121)| food_WP1_121 == 0] <- 121
+# 
+#   food_WP2_121 <- food_WP2
+#   food_WP2_121[is.nan(food_WP2_121)| food_WP2_121 == 0] <- 121
+# 
+# food_WP3_121 <- food_WP3 
+#   food_WP3_121[is.nan(food_WP3_121)| food_WP3_121 == 0] <- 121
+# 
+# food_WP4_121 <- food_WP4
+# food_WP4_121[is.nan(food_WP4_121)| food_WP4_121 == 0] <- 121
+# 
+# food_car_121 <- food_car
+# food_car_121[is.nan(food_car_121)| food_car_121 == 0] <- 121
+# 
+# #consolidate into layered raster
+# wa_food_121 <- c(food_WP1_121, food_WP2_121, food_WP3_121, food_WP4_121, food_car_121)
 
 
 
@@ -123,11 +95,6 @@ wa_food <- rast("./data/Food/wa_food.tif")
 
 wa_food[wa_food == 0] <- NA
 
-summary(wa_food)
-
-wa_food
-
-freq(wa_food)
 
 writeRaster(
   wa_food_121, 
